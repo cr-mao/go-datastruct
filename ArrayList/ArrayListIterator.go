@@ -1,6 +1,6 @@
 package ArrayList
 
-import "github.com/pkg/errors"
+import "errors"
 
 type Iterator interface {
 	HasNext() bool              //是否有下一个

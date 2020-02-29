@@ -2,9 +2,13 @@ package main
 
 import (
     "datastruct/ArrayList"
+    "datastruct/Myutils"
+    "datastruct/Queue"
+    "datastruct/StackArray"
     "fmt"
+    "io/ioutil"
 )
-
+////arrayList
 func ArrayListTest(){
     list :=ArrayList.NewArrayList()
     list.Append(2)
@@ -20,7 +24,7 @@ func ArrayListTest(){
     p.Clear()
     fmt.Println(p)
 }
-
+////使用迭代器遍历数组
 func IteratorTest() {
     list := ArrayList.NewArrayList()
     list.Append(1)
@@ -33,7 +37,6 @@ func IteratorTest() {
         fmt.Println(val)
     }
 }
-
 
 //栈结合ArrayList实现 (ArrayListStack)
 func ArrayListStackTest() {
@@ -56,9 +59,113 @@ func ArrayListStackTest() {
     fmt.Println(mystack.Pop())
 }
 
+//数组栈迭代器
+func ArrayListStackIteratorTest() {
+    mystack := ArrayList.NewArrayListStackX()
+    mystack.Push(1)
+    mystack.Push(2)
+    mystack.Push(3)
+    mystack.Push(4)
+    fmt.Println(mystack.Pop())
+    fmt.Println(mystack.Pop())
+    fmt.Println(mystack.Pop())
+    fmt.Println(mystack.Pop())
+    mystack.Push(1)
+    mystack.Push(2)
+    mystack.Push(3)
+    mystack.Push(4)
+    for it := mystack.Myit; it.HasNext(); {
+        val, _ := it.Next()
+        fmt.Println(val)
+    }
+}
+
+
+
+//递归文件夹
+func RecursiveFolderTest() {
+    path := "/Users/mac/code/golangproject/src/crblog.cc"
+    files := []string{}               //数组字符串
+    files, _ = Myutils.GetALL(path, files)    //抓取所有文件
+    for i := 0; i < len(files); i++ { //打印路径
+        fmt.Println(files[i])
+    }
+}
+
+//栈模拟递归
+func RecursiveFolderWithStackTest() {
+    path := "/Users/mac/code/golangproject/src/crblog.cc"
+    files := []string{} //数组字符串
+    mystack := StackArray.NewStack()
+    mystack.Push(path)
+    for !mystack.IsEmpty() {
+        path := mystack.Pop().(string)
+        files = append(files, path)     //加入列表
+        read, _ := ioutil.ReadDir(path) //读取文件夹下面所有的路径
+        for _, fi := range read {
+            if fi.IsDir() {
+                fulldir := path + "/" + fi.Name() //构造新的路径
+                mystack.Push(fulldir)
+
+            } else {
+                fulldir := path + "/" + fi.Name() //构造新的路径
+                files = append(files, fulldir)    //追加路径
+            }
+        }
+
+    }
+    for i := 0; i < len(files); i++ { //打印
+        fmt.Println(files[i])
+    }
+}
+
+//递归文件夹并打印层级
+func RecursiveFolderWithLevelTest() {
+    path := "/Users/mac/code/golangproject/src/crblog.cc"
+    Myutils.GetALLX(path, 1)
+}
+
+//栈模拟递归文件并打印层级
+func RecursiveFolderWithLevelStackTest() {
+    path := "/Users/mac/code/golangproject/src/crblog.cc"
+    files := []string{}                //数组字符串
+    files, _ = Myutils.GetALLY(path, files, 1) //抓取所有文件
+    for i := 0; i < len(files); i++ {  //打印路径
+        fmt.Println(files[i])
+    }
+}
+
+
+
+//队列测试
+func QueueTest() {
+    myq := Queue.NewQueue()
+    myq.EnQueue(1)
+    myq.EnQueue(2)
+    myq.EnQueue(3)
+    myq.EnQueue(4)
+    fmt.Println(myq.DeQueue())
+    fmt.Println(myq.DeQueue())
+    fmt.Println(myq.DeQueue())
+    fmt.Println(myq.DeQueue())
+    myq.EnQueue(14)
+    myq.EnQueue(114)
+    fmt.Println(myq.DeQueue())
+    fmt.Println(myq.DeQueue())
+    myq.EnQueue(11114)
+    fmt.Println(myq.DeQueue())
+}
+
 func main(){
     //ArrayListTest()
     //IteratorTest()
-    ArrayListStackTest()
+    //ArrayListStackTest()
+    //ArrayListStackIteratorTest()
+    //RecursiveFolderTest()
+    //RecursiveFolderWithStackTest()
+    //RecursiveFolderWithLevelTest()
+    //RecursiveFolderWithLevelStackTest()
+    //QueueTest()
+
 
 }

@@ -2,7 +2,7 @@ package ArrayList
 
 import (
 	"fmt"
-	"github.com/pkg/errors"
+	"errors"
 )
 
 //定义接口
