@@ -10,13 +10,13 @@ import (
 )
 ////arrayList
 func ArrayListTest(){
-    list :=ArrayList.NewArrayList()
+    list := arrayList.NewArrayList()
     list.Append(2)
     list.Append(3)
     list.Append("222")
     fmt.Println(list)
     fmt.Println(list.TheSize)
-    var p ArrayList.List = ArrayList.NewArrayList()
+    var p arrayList.List = arrayList.NewArrayList()
     for i := 0; i < 20; i++ {
         p.Append(i)
         fmt.Println(p)
@@ -26,7 +26,7 @@ func ArrayListTest(){
 }
 ////使用迭代器遍历数组
 func IteratorTest() {
-    list := ArrayList.NewArrayList()
+    list := arrayList.NewArrayList()
     list.Append(1)
     list.Append(2)
     list.Append(3)
@@ -40,7 +40,7 @@ func IteratorTest() {
 
 //栈结合ArrayList实现 (ArrayListStack)
 func ArrayListStackTest() {
-    mystack := ArrayList.NewArrayListStack()
+    mystack := arrayList.NewArrayListStack()
     mystack.Push(1)
     mystack.Push(2)
     mystack.Push(3)
@@ -61,7 +61,7 @@ func ArrayListStackTest() {
 
 //数组栈迭代器
 func ArrayListStackIteratorTest() {
-    mystack := ArrayList.NewArrayListStackX()
+    mystack := arrayList.NewArrayListStackX()
     mystack.Push(1)
     mystack.Push(2)
     mystack.Push(3)
@@ -80,13 +80,11 @@ func ArrayListStackIteratorTest() {
     }
 }
 
-
-
 //递归文件夹
 func RecursiveFolderTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
-    files := []string{}               //数组字符串
-    files, _ = Myutils.GetALL(path, files)    //抓取所有文件
+    files := []string{}                    //数组字符串
+    files, _ = myutils.GetALL(path, files) //抓取所有文件
     for i := 0; i < len(files); i++ { //打印路径
         fmt.Println(files[i])
     }
@@ -96,7 +94,7 @@ func RecursiveFolderTest() {
 func RecursiveFolderWithStackTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
     files := []string{} //数组字符串
-    mystack := StackArray.NewStack()
+    mystack := stackArray.NewStack()
     mystack.Push(path)
     for !mystack.IsEmpty() {
         path := mystack.Pop().(string)
@@ -122,24 +120,22 @@ func RecursiveFolderWithStackTest() {
 //递归文件夹并打印层级
 func RecursiveFolderWithLevelTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
-    Myutils.GetALLX(path, 1)
+    myutils.GetALLX(path, 1)
 }
 
 //栈模拟递归文件并打印层级
 func RecursiveFolderWithLevelStackTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
-    files := []string{}                //数组字符串
-    files, _ = Myutils.GetALLY(path, files, 1) //抓取所有文件
+    files := []string{}                        //数组字符串
+    files, _ = myutils.GetALLY(path, files, 1) //抓取所有文件
     for i := 0; i < len(files); i++ {  //打印路径
         fmt.Println(files[i])
     }
 }
 
-
-
 //队列测试
 func QueueTest() {
-    myq := Queue.NewQueue()
+    myq := queue.NewQueue()
     myq.EnQueue(1)
     myq.EnQueue(2)
     myq.EnQueue(3)
@@ -166,6 +162,7 @@ func main(){
     //RecursiveFolderWithLevelTest()
     //RecursiveFolderWithLevelStackTest()
     //QueueTest()
+
 
 
 }

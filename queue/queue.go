@@ -1,4 +1,4 @@
-package Queue
+package queue
 
 type MyQueue interface {
 	Size() int                //大小

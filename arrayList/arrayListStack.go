@@ -1,4 +1,4 @@
-package ArrayList
+package arrayList
 
 type StackArray interface {
 	Clear()                //清空

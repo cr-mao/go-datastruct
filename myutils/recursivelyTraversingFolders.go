@@ -1,4 +1,4 @@
-package Myutils
+package myutils
 //递归遍历文件夹
 
 import (
