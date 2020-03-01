@@ -162,7 +162,12 @@ func main(){
     //RecursiveFolderWithLevelTest()
     //RecursiveFolderWithLevelStackTest()
     //QueueTest()
+   // searchUtils.BinarySearchTest()
+   //searchUtils.CountFileLinesTest()
+   // searchUtils.SequentialSearchTest()
 
+   //快速排序 二分查找 用户数据检索
+   //searchUtils.QuickBinarySearchTest()
 
 
 }
