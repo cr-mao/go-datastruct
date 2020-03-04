@@ -31,9 +31,6 @@ func  QuickSortU(arr[] uuu9) []uuu9{
 		high:=make([]uuu9 ,0,0) //存储比我大的
 		mid:=make([]uuu9 ,0,0) //存储与我相等
 		mid=append(mid,splitdata) //加入第一个相等
-
-
-
 		for i:=1;i<length;i++{
 			if arr[i].user <splitdata.user{
 				low=append(low,arr[i])

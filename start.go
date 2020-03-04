@@ -168,6 +168,11 @@ func main(){
 
    //快速排序 二分查找 用户数据检索
    //searchUtils.QuickBinarySearchTest()
+    //自定义异常
+    //myexception.MyexceptionTest()
 
-
+    //searchUtils.SearchQQLine()
+    //searchUtils.SearchQQ()
+    //searchUtils.AdvanceQuickSortTest()
+    //searchUtils.AdvanceQuickSortAndBinarySearchQQTest()
 }
