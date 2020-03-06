@@ -16,6 +16,19 @@ type  QQ struct {
 	QQuser  int
 	password string
 }
+/*
+QQ.txt 84331445行
+521276402----hanlei@19940403
+286738260----WEIPEI559720
+501223616----feng66532008
+851400824----shuidongwo520
+1340382355----huang.512yang.
+1061817115----fz62wangyong1983
+347232860----20080811
+1028181591----7404850554
+120539543----0.0123456789
+754229005----460228214
+*/
 
 func SortForMergeQQ(arr[]QQ ,left int,right int){
 	for i:=left;i<=right;i++{
@@ -90,7 +103,7 @@ func  bin_searchQQX(arr[]QQ,data int)int{
 // 高级快速排序（小于15用插入排序，节约内存） 二分查找
 func AdvanceQuickSortAndBinarySearchQQTest()  {
 	alldata:=make([]QQ,N2,N2)//开辟数组，1800万
-	path:="/Users/mac/Downloads/算法/day3/QQ.txt"//路径
+	path:="/Users/mac/Downloads/QQ.txt"//路径
 	sqlfile,_:=os.Open(path)//打开文件
 	i:=0//统计行数
 	br:=bufio.NewReader(sqlfile) //读取文件对象

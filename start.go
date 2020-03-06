@@ -152,7 +152,10 @@ func QueueTest() {
     fmt.Println(myq.DeQueue())
 }
 
+
 func main(){
+
+    //数组，迭代器，栈迭代器，递归文件夹，栈递归文件夹
     //ArrayListTest()
     //IteratorTest()
     //ArrayListStackTest()
@@ -162,6 +165,20 @@ func main(){
     //RecursiveFolderWithLevelTest()
     //RecursiveFolderWithLevelStackTest()
     //QueueTest()
+
+    //选择排序
+    //sortUtil.SelectSortTest()
+    //冒泡排序
+    //sortUtil.BubbleSortTest()
+    //插入排序
+    //sortUtil.InsertSortTest()
+    //堆排序
+    //sortUtil.HeapSortTest()
+    //快速排序
+    //  sortUtil.QuickSortTest()
+    //奇偶排序
+    //sortUtil.OddEvenTest()
+
    // searchUtils.BinarySearchTest()
    //searchUtils.CountFileLinesTest()
    // searchUtils.SequentialSearchTest()
@@ -175,4 +192,6 @@ func main(){
     //searchUtils.SearchQQ()
     //searchUtils.AdvanceQuickSortTest()
     //searchUtils.AdvanceQuickSortAndBinarySearchQQTest()
+
+
 }
