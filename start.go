@@ -192,6 +192,9 @@ func main(){
     //searchUtils.SearchQQ()
     //searchUtils.AdvanceQuickSortTest()
     //searchUtils.AdvanceQuickSortAndBinarySearchQQTest()
+    //计数排序
+    //searchUtils.CountNumSortTest()
+
 
 
 }
