@@ -1,4 +1,4 @@
-package myutils
+package recurse
 //递归遍历文件夹
 
 import (

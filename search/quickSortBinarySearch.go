@@ -1,4 +1,4 @@
-package searchUtils
+package search
 
 //快速排序 二分查找 用户数据检索
 

@@ -5,6 +5,7 @@ import (
     "datastruct/Myutils"
     "datastruct/Queue"
     "datastruct/StackArray"
+    "datastruct/recurse"
     "fmt"
     "io/ioutil"
 )
@@ -84,8 +85,8 @@ func ArrayListStackIteratorTest() {
 func RecursiveFolderTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
     files := []string{}                    //数组字符串
-    files, _ = myutils.GetALL(path, files) //抓取所有文件
-    for i := 0; i < len(files); i++ { //打印路径
+    files, _ = recurse.GetALL(path, files) //抓取所有文件
+    for i := 0; i < len(files); i++ {      //打印路径
         fmt.Println(files[i])
     }
 }
@@ -120,15 +121,15 @@ func RecursiveFolderWithStackTest() {
 //递归文件夹并打印层级
 func RecursiveFolderWithLevelTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
-    myutils.GetALLX(path, 1)
+    recurse.GetALLX(path, 1)
 }
 
 //栈模拟递归文件并打印层级
 func RecursiveFolderWithLevelStackTest() {
     path := "/Users/mac/code/golangproject/src/crblog.cc"
     files := []string{}                        //数组字符串
-    files, _ = myutils.GetALLY(path, files, 1) //抓取所有文件
-    for i := 0; i < len(files); i++ {  //打印路径
+    files, _ = recurse.GetALLY(path, files, 1) //抓取所有文件
+    for i := 0; i < len(files); i++ {          //打印路径
         fmt.Println(files[i])
     }
 }

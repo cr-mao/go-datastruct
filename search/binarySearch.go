@@ -1,4 +1,4 @@
-package searchUtils
+package search
 
 import "fmt"
 

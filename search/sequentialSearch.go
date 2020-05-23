@@ -1,4 +1,4 @@
-package searchUtils
+package search
 
 // 顺序查找
 import (
