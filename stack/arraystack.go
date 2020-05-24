@@ -1,4 +1,4 @@
-package stackArray
+package stack
 
 type StackArray interface {
 	Clear()                //清空

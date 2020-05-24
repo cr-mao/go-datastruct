@@ -1,6 +1,6 @@
-package arrayList
+package arraylist
 
-type StackArray interface {
+type StackArrayX interface {
 	Clear()                //清空
 	Size() int             //大小
 	Pop() interface{}      //弹出
@@ -9,26 +9,26 @@ type StackArray interface {
 	IsEmpty() bool         //是否空了
 }
 
-type Stack struct {
+type StackX struct {
 	myarray *ArrayList
-	capsize int //栈最大空间（最大范围）
+	Myit    Iterator
 }
 
-func NewArrayListStack() *Stack {
-	mystack := new(Stack)
+func NewArrayListStackX() *StackX {
+	mystack := new(StackX)
 	mystack.myarray = NewArrayList()
-	mystack.capsize = 10 //空间
+	mystack.Myit = mystack.myarray.Iterator()
 	return mystack
 }
-func (mystack *Stack) Clear() {
+func (mystack *StackX) Clear() {
 	mystack.myarray.Clear()
 }
 
-func (mystack *Stack) Size() int {
+func (mystack *StackX) Size() int {
 	return mystack.myarray.TheSize
 }
 
-func (mystack *Stack) Pop() interface{} {
+func (mystack *StackX) Pop() interface{} {
 	if mystack.IsEmpty() {
 		return nil
 	}
@@ -37,13 +37,13 @@ func (mystack *Stack) Pop() interface{} {
 	return last
 }
 
-func (mystack *Stack) Push(data interface{}) {
+func (mystack *StackX) Push(data interface{}) {
 	if !mystack.IsFull() {
 		mystack.myarray.Append(data)
 	}
 }
 
-func (mystack *Stack) IsEmpty() bool {
+func (mystack *StackX) IsEmpty() bool {
 	if mystack.myarray.TheSize == 0 {
 		return true
 	} else {
@@ -51,8 +51,8 @@ func (mystack *Stack) IsEmpty() bool {
 	}
 }
 
-func (mystack *Stack) IsFull() bool {
-	if mystack.myarray.TheSize >= mystack.capsize {
+func (mystack *StackX) IsFull() bool {
+	if mystack.myarray.TheSize >= 10 {
 		return true
 	} else {
 		return false

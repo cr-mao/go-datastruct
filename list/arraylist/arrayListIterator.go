@@ -1,4 +1,4 @@
-package arrayList
+package arraylist
 
 import "errors"
 

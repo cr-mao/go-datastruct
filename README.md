@@ -3,6 +3,8 @@ frequently-used datastructures-algorithms and some case
  
   - list
     - arrayList、arrayListIterator
+    - singlelinkedlist
+    - doublylinkedlist
   - stack
     - arrayStack、arrayStackIterator
   - queue
