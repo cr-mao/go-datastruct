@@ -58,7 +58,6 @@ func (myq *Queue) DeQueue() interface{} {
 	}
 	myq.theSize--
 	return data //返回数据
-
 }
 func (myq *Queue) Clear() {
 	myq.dataStore = make([]interface{}, 0)

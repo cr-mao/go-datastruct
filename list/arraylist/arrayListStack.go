@@ -33,7 +33,7 @@ func (mystack *Stack) Pop() interface{} {
 		return nil
 	}
 	last := mystack.myarray.dataStore[mystack.myarray.TheSize-1]
-	mystack.myarray.Delete(mystack.myarray.TheSize - 1)
+	_ = mystack.myarray.Delete(mystack.myarray.TheSize - 1)
 	return last
 }
 
