@@ -7,6 +7,9 @@
     - doublylinkedlist
   - stack
     - arrayStack、arrayStackIterator
+    - demo
+        -   栈模拟递归
+        -   斐波那契数列
   - queue
   - sort 
     - bubbleSort
@@ -19,7 +22,12 @@
     - binarySearch
   - recurse
     - recurseFolders
-    
+        - demo
+            - 递归遍历文件夹
+            - 栈模拟递归遍历文件夹
+            - 递归文件夹并打印层级1
+            - 递归文件夹并打印层级2
+        
 #### Installation  
 
 ```shell

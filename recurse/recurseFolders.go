@@ -10,7 +10,7 @@ import (
 
 
 //递归遍历文件夹
-func GetALL(path string, files []string) ([]string, error) {
+func RecurseFolders(path string, files []string) ([]string, error) {
 	read, err := ioutil.ReadDir(path) //读取文件夹
 	if err != nil {
 		return files, errors.New("文件加不可读取")
@@ -19,7 +19,7 @@ func GetALL(path string, files []string) ([]string, error) {
 		if fi.IsDir() { //判断是否文件夹
 			fulldir := path + "/" + fi.Name() //构造新的路径
 			files = append(files, fulldir)    //追加路径
-			files, _ = GetALL(fulldir, files) //文件夹递归处理
+			files, _ = RecurseFolders(fulldir, files) //文件夹递归处理
 		} else {
 			fulldir := path + "/" + fi.Name() //构造新的路径
 			files = append(files, fulldir)    //追加路径
@@ -29,17 +29,17 @@ func GetALL(path string, files []string) ([]string, error) {
 }
 
 
-//打印层级
-func GetALLX(path string, level int) {
+//递归遍历文件夹打印层级
+func RecurseFoldersWithLevelPrint(path string, level int) {
 	levelstr := ""
 	realLevel := level
 	if level == 1 {
 		levelstr = "|--"
 	} else {
+		levelstr += "|--"
 		for ; level > 1; level-- {
 			levelstr += "|--"
 		}
-		levelstr += "|--"
 	}
 	read, err := ioutil.ReadDir(path) //读取文件夹
 	if err != nil {
@@ -49,8 +49,7 @@ func GetALLX(path string, level int) {
 		if fi.IsDir() { //判断是否文件夹
 			fulldir := path + "/" + fi.Name() //构造新的路径
 			fmt.Println(strconv.Itoa(realLevel) + levelstr + fulldir)
-			GetALLX(fulldir, realLevel+1) //文件夹递归处理
-
+			RecurseFoldersWithLevelPrint(fulldir, realLevel+1) //文件夹递归处理
 		} else {
 			fulldir := path + "/" + fi.Name() //构造新的路径
 			fmt.Println(strconv.Itoa(realLevel) + levelstr + fulldir)
@@ -58,8 +57,8 @@ func GetALLX(path string, level int) {
 	}
 }
 
-//栈模拟递归文件并打印层级
-func GetALLY(path string, files []string, level int) ([]string, error) {
+//递归文件夹显示层级并放到数组中
+func RecursiveFolderWithLevel(path string, files []string, level int) ([]string, error) {
 	read, err := ioutil.ReadDir(path) //读取文件夹
 	if err != nil {
 		return files, errors.New("文件加不可读取")
@@ -79,8 +78,7 @@ func GetALLY(path string, files []string, level int) ([]string, error) {
 		if fi.IsDir() { //判断是否文件夹
 			fulldir := path + "/" + fi.Name()                               //构造新的路径
 			files = append(files, strconv.Itoa(realLevel)+levelstr+fulldir) //追加路径
-			fmt.Println(fulldir)
-			files, _ = GetALLY(fulldir, files, realLevel+1) //文件夹递归处理
+			files, _ = RecursiveFolderWithLevel(fulldir, files, realLevel+1) //文件夹递归处理
 		} else {
 			fulldir := path + "/" + fi.Name()                               //构造新的路径
 			files = append(files, strconv.Itoa(realLevel)+levelstr+fulldir) //追加路径

@@ -16,3 +16,4 @@ func TestArrayStack(t *testing.T) {
 	t.Log(v)
 	assert.Equal(t, 1, v)
 }
+

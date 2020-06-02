@@ -35,7 +35,6 @@ func (mystack *Stack) Pop() interface{} {
 		mystack.dataSource = mystack.dataSource[:mystack.currentsize-1] //删除最后一个
 		mystack.currentsize--                                           //删除
 		return last
-
 	}
 	return nil
 }
