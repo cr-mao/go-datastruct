@@ -1,8 +1,8 @@
-package HashTableArray
+package hashtable
 
 import (
 	"crypto/sha512"
-	"github.com/pkg/errors"
+	"errors"
 )
 
 
@@ -24,12 +24,9 @@ func MySHA(str interface{},tableSize  int)int{
 		Hashvar=(Hashvar<<17|123&1235^139)+int(v) //哈希算法
 	}
 	return Hashvar%MintableSize
-
-
-
 }
 
-func MySHA256(str string,tableSize  int)int{
+func MySHA512(str string,tableSize  int)int{
 	shaobj:=sha512.New()
 	shaobj.Write([]byte(str)) //哈希
 	mybytes:=shaobj.Sum(nil)
@@ -89,7 +86,6 @@ func ( ht*HashTable)Find(data interface{})int  {
 		if curpos>ht.tableSize{
 			curpos-=ht.tableSize //越界，返回
 		}
-
 
 	}
 	return curpos
