@@ -11,6 +11,7 @@
         -   栈模拟递归
         -   斐波那契数列
   - queue
+    - 队列遍历文件夹
   - sort 
     - bubbleSort
     - insertSort
@@ -22,11 +23,12 @@
     - binarySearch
   - recurse
     - recurseFolders
-        - demo
-            - 递归遍历文件夹
-            - 栈模拟递归遍历文件夹
-            - 递归文件夹并打印层级1
-            - 递归文件夹并打印层级2
+        - 递归遍历文件夹
+        - 栈模拟递归遍历文件夹
+        - 递归文件夹并打印层级1
+        - 递归文件夹并打印层级2
+        
+  - hashtable
         
 #### Installation  
 
