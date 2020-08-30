@@ -1,5 +1,6 @@
 package queue
 
+//数组队列
 type MyQueue interface {
 	Size() int                //大小
 	Front() interface{}       //第一个元素
