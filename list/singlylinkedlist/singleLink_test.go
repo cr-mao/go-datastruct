@@ -38,6 +38,7 @@ func TestArrayList(t *testing.T) {
 	twoNode := link.GetNodeAtIndex(1)
 	assert.Equal(t, twoNode.Value(), 3, "根据索引获得节点失败")
 	//链表反转
+	t.Log("链表反转")
 	link.ReverseList()
 	t.Log(link.String())
 	link.DeleteAtIndex(0)

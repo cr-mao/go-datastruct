@@ -40,7 +40,7 @@ func (list *SingLinkList) GetFirstNode() *SingleLinkNode {
 
 //头部插入
 func (list *SingLinkList) InsertNodeFront(node *SingleLinkNode) {
-	// 如果没有头元素
+	// 如果没有头元素，这个其实永远不会走
 	if list.head == nil {
 		list.head.pNext = node
 		node.pNext = nil
