@@ -179,3 +179,39 @@ func (list *SingLinkList) String() string {
 	listString += fmt.Sprintf("nil")
 	return listString //打印链表字符串
 }
+
+//获得中间节点
+func (list *SingLinkList) GetMid() *SingleLinkNode {
+	node := list.head //头部节点
+	if node == nil {
+		return nil
+	}
+	phead1 := list.head
+	phead2 := list.head
+	for phead2 != nil && phead2.pNext != nil {
+		phead1 = phead1.pNext
+		phead2 = phead2.pNext.pNext
+	}
+	return phead1
+}
+
+// 链表反转
+// 下一个节点 指向 前一个节点, 头节点指向 原来的最后一个节点
+func (list *SingLinkList) ReverseList() {
+	if list.head == nil || list.head.pNext == nil {
+		return //链表为空或者链表只有一个节点
+	} else {
+		var pre *SingleLinkNode                   //前面节点
+		var cur *SingleLinkNode = list.head.pNext //当前节点
+		for cur != nil {
+			curNext := cur.pNext // 后续节点
+			cur.pNext = pre      //反转第一步
+
+			pre = cur     //持续推进
+			cur = curNext //持续推进
+		}
+		// fmt.Println(pre)
+		// list.head.pNext.pNext=nil
+		list.head.pNext = pre
+	}
+}
