@@ -2,11 +2,11 @@
 常用的数据结构和算法及一些案例实现
  
   - list
-    - arrayList、arrayListIterator
+    - arrayList、arrayListIterator 、arrayStackIterator
     - singlelinkedlist
     - doublylinkedlist
   - stack
-    - arrayStack、arrayStackIterator
+    - arrayStack 、linkStack
     - demo
         -   栈模拟递归
         -   斐波那契数列
@@ -29,6 +29,8 @@
         - 递归文件夹并打印层级2
         
   - hashtable
+  - tree
+    
         
 #### Installation  
 
