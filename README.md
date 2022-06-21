@@ -11,7 +11,11 @@
         -   栈模拟递归
         -   斐波那契数列
   - queue
-    - 队列遍历文件夹
+    -  arrayQueue  
+    -  linkqueue   
+    -  criclequeue
+    - demo 
+        - 广度遍历文件夹
   - sort 
     - bubbleSort
     - insertSort

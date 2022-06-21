@@ -206,7 +206,6 @@ func (list *SingLinkList) ReverseList() {
 		for cur != nil {
 			curNext := cur.pNext // 后续节点
 			cur.pNext = pre      //反转第一步
-
 			pre = cur     //持续推进
 			cur = curNext //持续推进
 		}
