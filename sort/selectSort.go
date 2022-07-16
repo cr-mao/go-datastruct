@@ -9,10 +9,10 @@ import (
 
 //选择排序
 func selectSort(sortNumArr []int) []int {
-	len := len(sortNumArr)
-	for i := 0; i < len-1; i++ { //只剩一个元素不需要挑选，
+	mylen := len(sortNumArr)
+	for i := 0; i < mylen-1; i++ { //只剩一个元素不需要挑选，
 		max := i                       //标记索引
-		for j := i + 1; j < len; j++ { //每次选出一个极大值
+		for j := i + 1; j < mylen; j++ { //每次选出一个极大值
 			if sortNumArr[max] < sortNumArr[j] {
 				max = j // 标记极大值大索引
 			}

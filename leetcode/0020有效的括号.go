@@ -1,11 +1,11 @@
-package main
+package leetcode
 
+import (
+	// "fmt"
+	"strings"
+)
 
 //栈 解决
-
-
-
-
 
 /**
 
@@ -40,30 +40,76 @@ package main
 
 
 提示：
-
 1 <= s.length <= 104
 s 仅由括号 '()[]{}' 组成
+*/
 
- */
+// func main() {
+// 	//fmt.Println(stringReplace("{]}[](){}"))
+// 	//fmt.Println(stringReplace("{}[](){}"))
 
+// 	fmt.Println(stackResolve("{]}[](){}"))
+// 	fmt.Println(stackResolve("{}[](){}"))
+// 	//fmt.Println(stackResolve("{}[](){}"))
 
-func main(){
+// 	fmt.Println(']')
 
+// }
 
-
-
+func stackResolve(str string) bool {
+	stack := NewStack()
+	n := 0
+	for _, v := range str {
+		if v == '{' || v == '(' || v == '[' {
+			stack.data = append(stack.data, v)
+			n++
+		} else {
+			if v == '}' {
+				if n == 0 || stack.data[n-1] != '{' {
+					return false
+				} else {
+					stack.data = stack.data[:n-1]
+					n--
+				}
+			}
+			if v == ']' {
+				if n == 0 || stack.data[n-1] != '[' {
+					return false
+				} else {
+					stack.data = stack.data[:n-1]
+					n--
+				}
+			}
+			if v == ')' {
+				if n == 0 || stack.data[n-1] != '(' {
+					return false
+				} else {
+					stack.data = stack.data[:n-1]
+					n--
+				}
+			}
+		}
+	}
+	return len(stack.data) == 0
 }
+
+// 字符串 方案1
+func stringReplace(str string) bool {
+	str = strings.Replace(str, "{}", "", -1)
+	str = strings.Replace(str, "[]", "", -1)
+	str = strings.Replace(str, "()", "", -1)
+	return len(str) == 0
+}
+
 type Stack struct {
-	data []byte
+	data  []rune
 	index int
 }
 
 func NewStack() *Stack {
-
 	return &Stack{
-		data:  make([]byte,10),
+		data:  make([]rune, 0),
 		index: 0,
 	}
-
 
 }

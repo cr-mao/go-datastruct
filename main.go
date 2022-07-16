@@ -36,7 +36,7 @@ func (bst *BinaryTree) Add(data int) {
 
 //插入节点
 func (bst *BinaryTree) add(n *Node, data int) *Node {
-	//到了尽头 
+	//到了尽头
 	if n == nil {
 		bst.Size++
 		return &Node{
