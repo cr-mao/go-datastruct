@@ -169,3 +169,35 @@ func (bst *BinaryTree) GenerateDepthstring(depth int) string {
 	}
 	return buffer.String()
 }
+
+// 移除最大节点
+func (bst *BinaryTree) RemoveMax() int {
+	max := bst.FindMax()
+	bst.Root = bst.removeMax(bst.Root)
+	return max
+}
+func (bst *BinaryTree) removeMax(n *Node) *Node {
+	if n.Right == nil {
+		leftNode := n.Left
+		bst.Size--
+		return leftNode
+	}
+	n.Right = bst.removeMax(n.Right)
+	return n
+}
+
+// 移除最小节点
+func (bst *BinaryTree) RemoveMin() int {
+	min := bst.FindMin()
+	bst.Root = bst.removeMin(bst.Root)
+	return min
+}
+func (bst *BinaryTree) removeMin(n *Node) *Node {
+	if n.Left == nil {
+		rightNode := n.Right
+		bst.Size--
+		return rightNode
+	}
+	n.Left = bst.removeMin(n.Left)
+	return n
+}
