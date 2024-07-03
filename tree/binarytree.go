@@ -1,12 +1,13 @@
 /**
 * @Author: maozhongyu
-* @Desc:
+* @Desc: 二叉树
 * @Date: 2024/6/27
 **/
 package tree
 
 import (
 	"bytes"
+	"container/list"
 	"fmt"
 	"strconv"
 )
@@ -200,4 +201,114 @@ func (bst *BinaryTree) removeMin(n *Node) *Node {
 	}
 	n.Left = bst.removeMin(n.Left)
 	return n
+}
+
+// 移除节点
+func (bst *BinaryTree) Remove(data int) {
+	bst.Root = bst.remove(bst.Root, data) //删除数据
+}
+
+func (bst *BinaryTree) remove(n *Node, data int) *Node {
+	if n == nil {
+		return nil //节点为空，不需要干活
+	}
+	if data < n.Data {
+		n.Left = bst.remove(n.Left, data) //递归左边
+		return n
+	} else if data > n.Data {
+		n.Right = bst.remove(n.Right, data) //递归右边
+		return n
+	} else {
+		//处理左边为空
+		if n.Left == nil {
+			rightNode := n.Right //备份右边节点
+			n.Right = nil
+			bst.Size-- //删除
+			return rightNode
+		}
+		//处理右边为空
+		if n.Right == nil {
+			leftNode := n.Left //备份右边节点
+			n.Left = nil       //处理节点返回
+			bst.Size--         //删除
+			return leftNode
+		}
+		//左右节点都不为空
+		oknode := bst.findMin(n.Right)        //找出比我小的节点顶替我， 右边的最小 也是比自己大的。
+		oknode.Right = bst.removeMin(n.Right) // 移除  右边 自身这个小的
+		oknode.Left = n.Left                  // 小节点左边，连接原来的左边。
+		n.Left = nil                          //删除的清空
+		n.Right = nil
+		return oknode //实现删除
+
+	}
+}
+
+// 非递归中序
+func (bst *BinaryTree) InOrderNoRecursion() []int {
+	mybst := bst.Root     //备份二叉树
+	mystack := list.New() //生成一个栈
+	res := make([]int, 0) //生成数组，容纳中序的数据
+	for mybst != nil || mystack.Len() != 0 {
+		for mybst != nil {
+			mystack.PushBack(mybst) //首先左边压入栈中
+			mybst = mybst.Left
+		}
+		if mystack.Len() != 0 {
+			v := mystack.Back()           //挨个取出节点
+			mybst = v.Value.(*Node)       //实例化
+			res = append(res, mybst.Data) //压入数据
+			mybst = mybst.Right           //追加
+			mystack.Remove(v)             //删除
+		}
+	}
+	return res
+}
+
+// 非递归前序
+func (bst *BinaryTree) PreOrderNoRecursion() []int {
+	mybst := bst.Root     //备份二叉树
+	mystack := list.New() //生成一个栈
+	res := make([]int, 0) //生成数组，容纳中序的数据
+	for mybst != nil || mystack.Len() != 0 {
+		for mybst != nil {
+			res = append(res, mybst.Data) //压入数据
+			mystack.PushBack(mybst)       //首先左边压入栈中
+			mybst = mybst.Left
+		}
+		if mystack.Len() != 0 {
+			v := mystack.Back()     //挨个取出节点
+			mybst = v.Value.(*Node) //实例化
+			//res=append(res,mybst.Data)//压入数据
+			mybst = mybst.Right //追加
+			mystack.Remove(v)   //删除
+		}
+	}
+	return res
+}
+
+// 后序非递归
+func (bst *BinaryTree) PostOrderNoRecursion() []int {
+	mybst := bst.Root     //备份二叉树
+	mystack := list.New() //生成一个栈
+	res := make([]int, 0) //生成数组，容纳中序的数据
+	var PreVisited *Node  //提前访问的节点 , 后续 要记录下 之前的节点， 不然无法反回去了
+
+	for mybst != nil || mystack.Len() != 0 {
+		for mybst != nil {
+			mystack.PushBack(mybst) //首先左边压入栈中
+			mybst = mybst.Left      //左边
+		}
+		v := mystack.Back() //取出节点
+		top := v.Value.(*Node)
+		// 循环到了尽头.
+		if (top.Left == nil && top.Right == nil) || (top.Right == nil && PreVisited == top.Left) || (PreVisited == top.Right) {
+			res = append(res, top.Data) //压入数据
+			PreVisited = top            //记录上一个节点
+			mystack.Remove(v)           //处理完了在栈中删除
+		} else {
+			mybst = top.Right //右边循环
+		}
+	}
+	return res
 }

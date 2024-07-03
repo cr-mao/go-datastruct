@@ -6,6 +6,7 @@
 package tree
 
 import (
+	list2 "container/list"
 	"fmt"
 	"testing"
 )
@@ -53,4 +54,13 @@ func TestBinaryTree(t *testing.T) {
 	// 移除最小节点
 	bst.RemoveMin()
 	fmt.Println(bst)
+}
+
+func TestList(t *testing.T) {
+	list := list2.New()
+	list.PushBack(1)
+	list.PushBack(2)
+	value := list.Back().Value.(int)
+	fmt.Println(value)
+
 }
