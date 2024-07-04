@@ -34,12 +34,13 @@
         
   - hashtable
   - tree
+    - binarytree  
     
         
 #### Installation  
 
 ```shell
-go get -u github.com/cr-mao/go-datastruct
+go get github.com/cr-mao/go-datastruct
 ```
   
  #### testing 

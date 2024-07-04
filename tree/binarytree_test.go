@@ -48,12 +48,21 @@ func TestBinaryTree(t *testing.T) {
 	bst.PostOrder()
 	fmt.Println("last ----------------------")
 	fmt.Println(bst)
-	// 移除最大节点
-	bst.RemoveMax()
-	fmt.Println(bst)
-	// 移除最小节点
-	bst.RemoveMin()
-	fmt.Println(bst)
+	//// 移除最大节点
+	//bst.RemoveMax()
+	//fmt.Println(bst)
+	//// 移除最小节点
+	//bst.RemoveMin()
+	//fmt.Println(bst)
+	// 广度遍历
+	fmt.Println("广度遍历----------------------")
+	bst.Levelshow()
+	// 深度遍历
+	fmt.Println("深度遍历----------------------")
+	bst.Stackshow(bst.Root)
+	// 最小公共祖先
+	fmt.Println(bst.FindlowerstAncestor(bst.Root, node2, node6).Data)
+
 }
 
 func TestList(t *testing.T) {
@@ -62,5 +71,4 @@ func TestList(t *testing.T) {
 	list.PushBack(2)
 	value := list.Back().Value.(int)
 	fmt.Println(value)
-
 }

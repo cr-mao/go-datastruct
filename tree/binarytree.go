@@ -312,3 +312,75 @@ func (bst *BinaryTree) PostOrderNoRecursion() []int {
 	}
 	return res
 }
+
+func (bst *BinaryTree) Levelshow() {
+	bst.levelshow(bst.Root)
+}
+
+// 广度遍历
+func (bst *BinaryTree) levelshow(n *Node) {
+	myqueue := list.New() //新建一个list模拟队列
+	myqueue.PushBack(n)   //后面压入数据
+	for myqueue.Len() > 0 {
+		left := myqueue.Front() //前面取出数据
+		right := left.Value
+		myqueue.Remove(left) //删除
+		if v, ok := right.(*Node); ok && v != nil {
+			fmt.Println(v.Data) //打印数据
+			myqueue.PushBack(v.Left)
+			myqueue.PushBack(v.Right)
+		}
+	}
+}
+
+func (bst *BinaryTree) Stackshow(n *Node) {
+	myqueue := list.New() //新建一个list模拟队列
+	myqueue.PushBack(n)   //后面压入数据
+	for myqueue.Len() > 0 {
+		left := myqueue.Back() //前面取出数据 ,此时是栈
+		right := left.Value
+		myqueue.Remove(left) //删除
+		if v, ok := right.(*Node); ok && v != nil {
+			fmt.Println(v.Data) //打印数据
+			myqueue.PushBack(v.Left)
+			myqueue.PushBack(v.Right)
+		}
+	}
+}
+
+// 最小公共祖先
+func (bst *BinaryTree) FindlowerstAncestor(root *Node, nodea *Node, nodeb *Node) *Node {
+	if root == nil {
+		return nil
+	}
+	if root == nodea || root == nodeb {
+		return root //有一个节点是根节点，
+	}
+	left := bst.FindlowerstAncestor(root.Left, nodea, nodeb)   //递归查找
+	right := bst.FindlowerstAncestor(root.Right, nodea, nodeb) //递归查找
+	if left != nil && right != nil {
+		return root
+	}
+	if left != nil {
+		return left
+	} else {
+		return right
+	}
+}
+
+// 递归二叉树深度
+func (bst *BinaryTree) GetDepth(root *Node) int {
+	if root == nil {
+		return 0
+	}
+	if root.Right == nil && root.Left == nil {
+		return 1
+	}
+	lengthleft := bst.GetDepth(root.Left)
+	rightlength := bst.GetDepth(root.Right)
+	if lengthleft > rightlength {
+		return lengthleft + 1
+	} else {
+		return rightlength + 1
+	}
+}
